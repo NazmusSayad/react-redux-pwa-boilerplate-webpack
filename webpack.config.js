@@ -2,7 +2,6 @@ const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 const IN_DEV_MODE = true
-const SOURCE_MAP = false
 const PATH = {
   mainJS: "src/index.js",
   template: "src/index.html",
@@ -15,7 +14,7 @@ for (let key in PATH) {
 
 module.exports = {
   mode: IN_DEV_MODE ? "development" : "production",
-  devtool: SOURCE_MAP ? "source-map" : false,
+  devtool: IN_DEV_MODE ? "source-map" : false,
 
   entry: {
     script: PATH.mainJS,
