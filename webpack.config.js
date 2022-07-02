@@ -1,7 +1,6 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
-console.log(process.env.NODE_ENV)
 const IN_DEV_MODE = true
 const PATH = {
   mainJS: "src/index.js",
@@ -39,7 +38,7 @@ module.exports = {
     port: 80,
     open: true,
     hot: true,
-    compress: !IN_DEV_MODE,
+    compress: process.env.NODE_ENV === "production",
   },
   module: {
     rules: [

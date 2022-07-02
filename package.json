@@ -4,14 +4,14 @@
     "build": "cross-env NODE_ENV=production webpack build"
   },
   "devDependencies": {
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest",
     "cross-env": "latest",
     "css-loader": "latest",
     "html-webpack-plugin": "latest",
     "sass": "latest",
     "sass-loader": "latest",
-    "style-loader": "latest",
-    "webpack": "latest",
-    "webpack-cli": "latest",
-    "webpack-dev-server": "latest"
+    "style-loader": "latest"
   }
 }
