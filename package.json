@@ -1,11 +1,17 @@
 {
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack build"
+  },
   "devDependencies": {
     "webpack": "latest",
     "webpack-cli": "latest",
-    "webpack-dev-server": "latest"
+    "webpack-dev-server": "latest",
+    "html-webpack-plugin": "latest",
+    "sass": "latest",
+    "css-loader": "latest",
+    "sass-loader": "latest",
+    "style-loader": "latest"
   },
-  "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "watch": "webpack --config webpack.config.js --watch"
-  }
+  "dependencies": {}
 }
