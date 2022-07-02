@@ -1,6 +1,7 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
+console.log(process.env.NODE_ENV)
 const IN_DEV_MODE = true
 const PATH = {
   mainJS: "src/index.js",
@@ -15,7 +16,6 @@ if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = IN_DEV_MODE ? "development" : "production"
 }
 
-console.log(process.env.NODE_ENV)
 console.clear()
 console.log(`:: ${process.env.NODE_ENV} started.....`)
 
