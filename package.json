@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack build"
+    "build": "set NODE_ENV=production& webpack build"
   },
   "devDependencies": {
     "webpack": "latest",
