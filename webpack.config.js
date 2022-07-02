@@ -11,11 +11,17 @@ const PATH = {
 for (let key in PATH) {
   PATH[key] = path.resolve(__dirname, PATH[key])
 }
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = IN_DEV_MODE ? "development" : "production"
+}
+
+console.clear()
+console.log(`:: ${process.env.NODE_ENV} started.....`)
 
 module.exports = {
-  mode: IN_DEV_MODE ? "development" : "production",
-  devtool: IN_DEV_MODE ? "source-map" : false,
-
+  mode: process.env.NODE_ENV,
+  devtool: process.env.NODE_ENV === "development" ? "source-map" : false,
+  
   entry: {
     script: PATH.mainJS,
   },
@@ -49,3 +55,5 @@ module.exports = {
     }),
   ],
 }
+
+
