@@ -15,6 +15,7 @@ if (!process.env.NODE_ENV) {
   process.env.NODE_ENV = IN_DEV_MODE ? "development" : "production"
 }
 
+console.log(process.env.NODE_ENV)
 console.clear()
 console.log(`:: ${process.env.NODE_ENV} started.....`)
 
