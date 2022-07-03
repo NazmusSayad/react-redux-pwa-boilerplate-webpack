@@ -2,7 +2,7 @@ const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 const PATH = {
-  mainJS: "src/index.js",
+  mainJS: "src/script.js",
   template: "src/index.html",
   output: "dist",
 }
