@@ -1,7 +1,6 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
-const IN_DEV_MODE = true
 const PATH = {
   mainJS: "src/index.js",
   template: "src/index.html",
@@ -11,35 +10,18 @@ const PATH = {
 for (let key in PATH) {
   PATH[key] = path.resolve(__dirname, PATH[key])
 }
-if (!process.env.NODE_ENV) {
-  process.env.NODE_ENV = IN_DEV_MODE ? "development" : "production"
-}
 
-console.clear()
-console.log(`:: ${process.env.NODE_ENV} started.....`)
-
-module.exports = {
-  mode: process.env.NODE_ENV,
-  devtool: process.env.NODE_ENV === "development" ? "source-map" : false,
-  
+const CONFIG = {
   entry: {
     script: PATH.mainJS,
   },
   output: {
     path: PATH.output,
-    filename: "[name].js",
-    assetModuleFilename: "[name][ext]",
+    filename: "script.js",
+    assetModuleFilename: "[name]-[id][ext]",
+    clean: true,
   },
 
-  devServer: {
-    static: {
-      directory: PATH.output,
-    },
-    port: 80,
-    open: true,
-    hot: true,
-    compress: process.env.NODE_ENV === "production",
-  },
   module: {
     rules: [
       {
@@ -56,4 +38,4 @@ module.exports = {
   ],
 }
 
-
+module.exports = { CONFIG, PATH }
