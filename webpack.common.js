@@ -29,9 +29,6 @@ const CONFIG = {
         test: /\.(scss|sass|css)$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
-    ],
-
-    rules: [
       {
         test: /\.html$/i,
         loader: "html-loader",
