@@ -4,13 +4,17 @@
     "build": "webpack build --config webpack.prod.js"
   },
   "devDependencies": {
-    "webpack": "latest",
-    "webpack-cli": "latest",
-    "webpack-dev-server": "latest",
+    "@babel/core": "latest",
+    "@babel/preset-env": "latest",
+    "babel-loader": "latest",
     "css-loader": "latest",
+    "html-loader": "^4.1.0",
     "html-webpack-plugin": "latest",
     "sass": "latest",
     "sass-loader": "latest",
-    "style-loader": "latest"
+    "style-loader": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest"
   }
 }

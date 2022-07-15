@@ -15,6 +15,7 @@ const CONFIG = {
   entry: {
     script: PATH.mainJS,
   },
+
   output: {
     path: PATH.output,
     filename: "script.js",
@@ -29,7 +30,15 @@ const CONFIG = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
+
+    rules: [
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      },
+    ],
   },
+
   plugins: [
     new HtmlWebpackPlugin({
       filename: "index.html",
