@@ -8,7 +8,7 @@
     "@babel/preset-env": "latest",
     "babel-loader": "latest",
     "css-loader": "latest",
-    "html-loader": "^4.1.0",
+    "html-loader": "latest",
     "html-webpack-plugin": "latest",
     "sass": "latest",
     "sass-loader": "latest",
