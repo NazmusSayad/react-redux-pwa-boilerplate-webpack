@@ -13,21 +13,29 @@ for (let key in PATH) {
 
 const CONFIG = {
   entry: {
-    script: PATH.mainJS,
+    index: PATH.mainJS,
   },
 
   output: {
     path: PATH.output,
-    filename: "script.js",
+    filename: "[name].js",
     assetModuleFilename: "[name]-[id][ext]",
-    clean: true,
+    sourcePrefix: "",
   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: "index.html",
+      template: PATH.template,
+      favicon: "./src/assests/icon.svg",
+    }),
+  ],
 
   module: {
     rules: [
       {
-        test: /\.(scss|sass|css)$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.(css|scss|sass)$/i,
+        use: ["css-loader", "sass-loader"],
       },
       {
         test: /\.html$/i,
@@ -35,13 +43,6 @@ const CONFIG = {
       },
     ],
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: PATH.template,
-    }),
-  ],
 }
 
 module.exports = { CONFIG, PATH }
