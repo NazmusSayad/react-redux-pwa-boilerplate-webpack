@@ -22,27 +22,33 @@ const CONFIG = {
     assetModuleFilename: "[name]-[id][ext]",
     sourcePrefix: "",
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      filename: "index.html",
-      template: PATH.template,
-      favicon: "./src/assests/icon.svg",
-    }),
-  ],
-
-  module: {
-    rules: [
-      {
-        test: /\.(css|scss|sass)$/i,
-        use: ["css-loader", "sass-loader"],
-      },
-      {
-        test: /\.html$/i,
-        loader: "html-loader",
-      },
-    ],
-  },
 }
+
+const cssLoaders = ["style-loader", "css-loader"]
+
+CONFIG.module = {
+  rules: [
+    {
+      test: /\.css$/i,
+      use: cssLoaders,
+    },
+    {
+      test: /\.(scss|sass)$/i,
+      use: [...cssLoaders, "sass-loader"],
+    },
+    {
+      test: /\.html$/i,
+      loader: "html-loader",
+    },
+  ],
+}
+
+CONFIG.plugins = [
+  new HtmlWebpackPlugin({
+    filename: "index.html",
+    template: PATH.template,
+    favicon: "./src/assests/icon.svg",
+  }),
+]
 
 module.exports = { CONFIG, PATH }
