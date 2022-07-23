@@ -5,7 +5,7 @@ CONFIG.stats = "errors-warnings"
 CONFIG.devtool = "eval-source-map"
 
 CONFIG.devServer = {
-  watchFiles: ["src/*"],
+  watchFiles: ["src/*", "public/*"],
 
   client: {
     logging: "none",
