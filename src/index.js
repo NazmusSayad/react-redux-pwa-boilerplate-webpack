@@ -1,2 +1,2 @@
-import "./sass/style.scss"
-import "./js/app.js"
+import "./sass/base/index.scss"
+import "./controller/controller.js"
