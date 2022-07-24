@@ -1,4 +1,4 @@
-@mixin --($_, $__: null) {
+@mixin break($_, $__: null) {
    @if ($__) {
       @media only screen and (min-width: $_) and (max-width: $__) {
          @content;
