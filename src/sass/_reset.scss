@@ -1,4 +1,3 @@
-// Site Defaults
 *,
 *::after,
 *::before {
@@ -24,7 +23,9 @@ table {
 }
 
 button,
-input[type="submit"] {
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
   cursor: pointer;
 
   &[disabled] {
@@ -47,10 +48,6 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
-}
-
-h1 {
-  font-size: 2em;
 }
 
 [hidden] {
