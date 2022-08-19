@@ -13,7 +13,6 @@ class InterpolateHtmlPlugin {
         .afterTemplateExecution.tap('InterpolateHtmlPlugin', data => {
           Object.keys(this.replacements).forEach(key => {
             const value = this.replacements[key]
-            console.log({ value })
             data.html = data.html.replace(new RegExp(`%${key}%/`, 'g'), value)
           })
         })
@@ -72,6 +71,7 @@ const DEFAULT = {
     new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
       PUBLIC_URL: PATH.public,
     }),
+
   ],
 }
 

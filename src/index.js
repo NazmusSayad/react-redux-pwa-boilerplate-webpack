@@ -1,7 +1,6 @@
-import React from 'react'
-import { render } from 'react-dom'
-import App from './components/button/buttons'
-render(<App />, document.getElementById('root'))
+import { createRoot } from 'react-dom/client'
+import App from './App'
 
-import svg from './public.svg'
-console.log(svg)
+const root = createRoot(document.getElementById('root'))
+
+root.render(<App />)
