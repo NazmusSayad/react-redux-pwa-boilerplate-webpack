@@ -23,7 +23,7 @@ class InterpolateHtmlPlugin {
 const PATH = {
   mainJS: __dirname + '/src/index.js',
   template: __dirname + '/src/index.html',
-  build: __dirname + '/build',
+  build: __dirname + '/dist',
   assest: 'static',
   public: '/',
 }
