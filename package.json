@@ -13,6 +13,7 @@
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
     "babel-loader": "latest",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "latest",
     "html-loader": "latest",
     "html-webpack-plugin": "latest",
