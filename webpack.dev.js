@@ -24,9 +24,9 @@ module.exports = {
       progress: false,
     },
 
-    host: 'localhost',
-    port: 80,
     hot: true,
     compress: false,
+    host: 'localhost',
+    port: 80,
   },
 }

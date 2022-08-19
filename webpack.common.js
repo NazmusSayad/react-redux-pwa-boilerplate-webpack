@@ -67,11 +67,9 @@ const DEFAULT = {
     new HtmlWebpackPlugin({
       template: PATH.template,
     }),
-
     new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
       PUBLIC_URL: PATH.public,
     }),
-
   ],
 }
 
