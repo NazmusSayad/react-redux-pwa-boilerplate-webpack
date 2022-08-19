@@ -1,12 +1,19 @@
 {
-  "browserslist": [
-    "last 5 version",
-    "> 1%",
-    "IE 11"
-  ],
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack build --config webpack.prod.js"
+  },
+  "browserslist": {
+    "production": [
+      "last 5 version",
+      "> 1%",
+      "IE 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
     "@babel/core": "latest",
