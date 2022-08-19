@@ -100,7 +100,7 @@ const makeCssRules = (loaders = []) => {
   return [normalCss, moduleCss]
 }
 
-const makeBabelRules = (extraPresets = []) => {
+const makeBabelRules = ({ presets = [], plugins = [] }) => {
   return {
     test: /\.(js|mjs|jsx)$/,
     exclude: /node_modules/,
@@ -114,8 +114,9 @@ const makeBabelRules = (extraPresets = []) => {
               runtime: 'automatic',
             },
           ],
-          ...extraPresets,
+          ...presets,
         ],
+        plugins: [...plugins],
       },
     },
   }

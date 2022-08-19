@@ -19,6 +19,7 @@
     "@babel/core": "latest",
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
+    "@pmmmwh/react-refresh-webpack-plugin": "latest",
     "babel-loader": "latest",
     "copy-webpack-plugin": "latest",
     "css-loader": "latest",
@@ -33,6 +34,7 @@
     "style-loader": "latest",
     "webpack": "latest",
     "webpack-cli": "latest",
+    "react-refresh": "latest",
     "webpack-dev-server": "latest"
   },
   "dependencies": {

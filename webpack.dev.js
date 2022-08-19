@@ -1,4 +1,5 @@
 const { DEFAULT, makeCssRules, makeBabelRules } = require('./webpack.common')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 const cssRules = ['style-loader', 'css-loader']
 
@@ -10,13 +11,17 @@ module.exports = {
   devtool: 'eval-source-map',
 
   module: {
-    rules: [...DEFAULT.loaders, ...makeCssRules(cssRules), makeBabelRules()],
+    rules: [
+      ...DEFAULT.loaders,
+      ...makeCssRules(cssRules),
+      makeBabelRules({ plugins: ['react-refresh/babel'] }),
+    ],
   },
 
-  plugins: [...DEFAULT.plugins],
+  plugins: [...DEFAULT.plugins, new ReactRefreshWebpackPlugin()],
 
   devServer: {
-    watchFiles: ['src/*', 'public/*'],
+    // watchFiles: ['src/*', 'public/*'],
 
     client: {
       logging: 'none',

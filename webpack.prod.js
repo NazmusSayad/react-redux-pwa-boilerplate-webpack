@@ -32,8 +32,7 @@ module.exports = {
     rules: [
       ...DEFAULT.loaders,
       ...makeCssRules(cssRules),
-
-      makeBabelRules(['@babel/preset-env']),
+      makeBabelRules({ presets: ['@babel/preset-env'] }),
     ],
   },
 
