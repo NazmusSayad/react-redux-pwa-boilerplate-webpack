@@ -1,26 +1,32 @@
-const { CONFIG, PATH } = require("./webpack.common")
+const { DEFAULT, makeCssRules, makeBabelRules } = require('./webpack.common')
 
-CONFIG.mode = "development"
-CONFIG.stats = "errors-warnings"
-CONFIG.devtool = "eval-source-map"
+const cssRules = ['style-loader', 'css-loader']
 
-CONFIG.devServer = {
-  watchFiles: ["src/*", "public/*"],
+module.exports = {
+  ...DEFAULT.root,
 
-  client: {
-    logging: "none",
-    overlay: false,
-    progress: false,
+  mode: 'development',
+  stats: 'errors-warnings',
+  devtool: 'eval-source-map',
+
+  module: {
+    rules: [...DEFAULT.loaders, ...makeCssRules(cssRules), makeBabelRules()],
   },
 
-  static: {
-    directory: PATH.output,
-  },
+  plugins: [...DEFAULT.plugins],
 
-  host: "localhost",
-  port: 80,
-  hot: true,
-  compress: false,
+  devServer: {
+    watchFiles: ['src/*', 'public/*'],
+
+    client: {
+      logging: 'none',
+      overlay: false,
+      progress: false,
+    },
+
+    host: 'localhost',
+    port: 80,
+    hot: true,
+    compress: false,
+  },
 }
-
-module.exports = CONFIG

@@ -1,39 +1,46 @@
-const { CONFIG } = require("./webpack.common")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-CONFIG.mode = "production"
-CONFIG.output.clean = true
+const {
+  DEFAULT,
+  PATH,
+  makeCssRules,
+  makeBabelRules,
+} = require('./webpack.common')
 
-CONFIG.module.rules.push({
-  test: /\.m?js$/,
-  exclude: /(node_modules|bower_components)/,
-  use: {
-    loader: "babel-loader",
-    options: {
-      presets: ["@babel/preset-env"],
-    },
-  },
-})
+DEFAULT.root.output.clean = true
 
-CONFIG.plugins.push(
-  new MiniCssExtractPlugin({
-    filename: "[name].css",
-  })
-)
-
-const cssLoaders = [
+const cssRules = [
   MiniCssExtractPlugin.loader,
-  "css-loader",
+  'css-loader',
   {
-    loader: "postcss-loader",
+    loader: 'postcss-loader',
     options: {
       postcssOptions: {
-        plugins: ["postcss-preset-env"],
+        plugins: ['postcss-preset-env'],
       },
     },
   },
 ]
-CONFIG.module.rules[0].use = cssLoaders
-CONFIG.module.rules[1].use = [...cssLoaders, "sass-loader"]
 
-module.exports = CONFIG
+module.exports = {
+  ...DEFAULT.root,
+
+  mode: 'production',
+
+  module: {
+    rules: [
+      ...DEFAULT.loaders,
+      ...makeCssRules(cssRules),
+
+      makeBabelRules(['@babel/preset-env']),
+    ],
+  },
+
+  plugins: [
+    ...DEFAULT.plugins,
+
+    new MiniCssExtractPlugin({
+      filename: PATH.assest + '/[name].css',
+    }),
+  ],
+}
