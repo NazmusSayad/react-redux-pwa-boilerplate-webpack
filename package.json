@@ -1,44 +1,45 @@
 {
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack build --config webpack.prod.js"
+    "build": "webpack build --config webpack.prod.js",
+    "stable": "npm update --save"
   },
-  "browserslist": {
-    "production": [
-      "last 5 version",
-      "> 1%",
-      "IE 11"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest"
   },
   "devDependencies": {
     "@babel/core": "latest",
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
     "@pmmmwh/react-refresh-webpack-plugin": "latest",
-    "babel-loader": "latest",
     "copy-webpack-plugin": "latest",
-    "css-loader": "latest",
-    "html-loader": "latest",
     "html-webpack-plugin": "latest",
     "mini-css-extract-plugin": "latest",
-    "postcss": "latest",
-    "postcss-loader": "latest",
     "postcss-preset-env": "latest",
-    "sass": "latest",
+    "react-refresh": "latest",
+    "babel-loader": "latest",
+    "css-loader": "latest",
+    "html-loader": "latest",
+    "postcss-loader": "latest",
     "sass-loader": "latest",
     "style-loader": "latest",
+    "sass": "latest",
+    "postcss": "latest",
     "webpack": "latest",
     "webpack-cli": "latest",
-    "react-refresh": "latest",
     "webpack-dev-server": "latest"
   },
-  "dependencies": {
-    "react": "latest",
-    "react-dom": "latest"
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      "last 5 version",
+      "> 1%",
+      "IE 11"
+    ]
   }
 }

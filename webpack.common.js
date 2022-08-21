@@ -30,20 +30,22 @@ const PATH = {
 
 const DEFAULT = {
   root: {
+    mode: process.env.NODE_ENV,
+
     entry: {
       index: PATH.mainJS,
-    },
-
-    output: {
-      path: PATH.build,
-      filename: PATH.assest + '/[name].js',
-      assetModuleFilename: PATH.assest + '/assest/[name]-[id][ext]',
-      publicPath: PATH.public,
     },
 
     resolve: {
       extensions: ['.js', '.mjs', '.jsx', '.json', '.wasm'],
     },
+  },
+
+  output: {
+    path: PATH.build,
+    filename: PATH.assest + '/[name].js',
+    assetModuleFilename: PATH.assest + '/assest/[name]-[id][ext]',
+    publicPath: PATH.public,
   },
 
   loaders: [
@@ -77,33 +79,28 @@ const makeCssRules = (loaders = []) => {
   const cssRegex = /\.(css|scss|sass)$/i
   const moduleRegex = /\.module\.(css|scss|sass)$/i
 
-  const normalCss = {
+  const cssLoaders = {
     test: cssRegex,
-    exclude: moduleRegex,
     use: [...loaders, 'sass-loader'],
   }
 
-  const moduleCss = {
-    test: cssRegex,
-    include: moduleRegex,
-    use: [...loaders, 'sass-loader'],
-  }
-
-  moduleCss.use[moduleCss.use.indexOf('css-loader')] = {
+  cssLoaders.use[cssLoaders.use.indexOf('css-loader')] = {
     loader: 'css-loader',
     options: {
-      importLoaders: 1,
-      modules: true,
+      modules: {
+        auto: moduleRegex,
+        localIdentName: '[path][name]__[local]--[hash:base64:5]',
+      },
     },
   }
 
-  return [normalCss, moduleCss]
+  return cssLoaders
 }
 
 const makeBabelRules = ({ presets = [], plugins = [] }) => {
   return {
     test: /\.(js|mjs|jsx)$/,
-    exclude: /node_modules/,
+    exclude: /(node_modules|bower_components)/,
     use: {
       loader: 'babel-loader',
       options: {
