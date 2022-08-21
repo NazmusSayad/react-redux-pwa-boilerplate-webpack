@@ -7,7 +7,6 @@ module.exports = {
 
   stats: 'errors-warnings',
   devtool: 'eval-source-map',
-
   output: DEFAULT.output,
 
   module: {
@@ -21,15 +20,16 @@ module.exports = {
   plugins: [...DEFAULT.plugins, new ReactRefreshWebpackPlugin()],
 
   devServer: {
+    host: 'localhost',
+    port: 80,
+    hot: true,
+    compress: false,
+    historyApiFallback: true,
+
     client: {
       logging: 'none',
       overlay: false,
       progress: false,
     },
-
-    hot: true,
-    compress: false,
-    host: 'localhost',
-    port: 80,
   },
 }

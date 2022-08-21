@@ -1,7 +1,11 @@
-import css from './app.module.scss'
+import InitialApp from './InitialApp/InitialApp'
 
 const App = () => {
-  return <h1 className={css.hello}>Hello world!</h1>
+  return (
+    <main>
+      <InitialApp />
+    </main>
+  )
 }
 
 export default App
