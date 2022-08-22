@@ -90,8 +90,8 @@ const makeCssRule = (loaders = []) => {
     loader: 'css-loader',
     options: {
       modules: {
-        // auto: moduleRegex,
         auto: true,
+        // auto: moduleRegex,
         exportLocalsConvention: 'dashes',
         localIdentName: '[path][name]__[local]--[hash:base64:5]',
       },
