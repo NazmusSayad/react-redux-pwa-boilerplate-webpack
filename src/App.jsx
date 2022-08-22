@@ -9,3 +9,6 @@ const App = () => {
 }
 
 export default App
+
+
+import fs from './assests/icon.png'

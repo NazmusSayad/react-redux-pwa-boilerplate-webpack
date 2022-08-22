@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {
   DEFAULT,
-  PATH,
+  CONFIG,
   makeCssRule,
   makeBabelRule,
 } = require('./webpack.common')
@@ -41,11 +41,11 @@ module.exports = {
     ...DEFAULT.plugins,
 
     new MiniCssExtractPlugin({
-      filename: PATH.assest + '/[name].css',
+      filename: CONFIG.assestPath + '/[name].css',
     }),
 
     new CopyWebpackPlugin({
-      patterns: [{ from: PATH.publicDir }],
+      patterns: [{ from: CONFIG.publicDir }],
     }),
   ],
 }

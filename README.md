@@ -48,17 +48,19 @@ $ cd react-minimal-boilerplate
 
 ## Configuring
 
-- Chnage files location from [webpack.common.js](/webpack.common.js)
+- For basic configurations [webpack.common.js](/webpack.common.js)
 
    ```
-   const PATH = {
-      build: __dirname + '/build',
-      publicDir: __dirname + '/public',
-      mainJS: __dirname + '/src/index.js',
-      template: __dirname + '/src/index.html',
-      public: '/',
-      assest: 'static',
-   }
+  const CONFIG = {
+     build: __dirname + '/build',
+     publicDir: __dirname + '/public',
+     mainJS: __dirname + '/src/index.js',
+     template: __dirname + '/src/index.html',
+     publicPath: '/',
+     assestPath: 'static',
+     cssRegex: /\.(c|sc|sa)ss$/i,
+     cssModuleRegex: /\.module\.\w+$/i,
+  }
    ```
    
    
@@ -73,22 +75,14 @@ $ cd react-minimal-boilerplate
    ]
    ```
    
-   
-- Change css|scss|sass module type extensions from [webpack.common.js](/webpack.common.js)
+- To change CSS module regex first remove comment from `makeCssRules` constant functions [webpack.common.js](/webpack.common.js)
 
-  1. Remove the comments from `makeCssRule` constant function 
-
-       ```
-        // const moduleRegex = /\.module\.(css|scss|sass)$/i
-        ...
-        // auto: moduleRegex,
-       ```
-    
-  2. Assign your regex
-
-       ```
-        const moduleRegex = yourRegex
-       ```
+   ```
+    modules: {
+      // auto: CONFIG.cssModuleRegex,
+      localIdentName: '[local]-[hash:base64:8]',
+    }
+   ```
 
 
 - Configure development server from [webpack.dev.js](/webpack.dev.js)

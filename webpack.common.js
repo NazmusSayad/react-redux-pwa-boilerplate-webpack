@@ -1,5 +1,16 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
+const CONFIG = {
+  build: __dirname + '/build',
+  publicDir: __dirname + '/public',
+  mainJS: __dirname + '/src/index.js',
+  template: __dirname + '/src/index.html',
+  publicPath: '/',
+  assestPath: 'static',
+  cssRegex: /\.(c|sc|sa)ss$/i,
+  cssModuleRegex: /\.module\.\w+$/i,
+}
+
 class InterpolateHtmlPlugin {
   constructor(htmlWebpackPlugin, replacements) {
     this.htmlWebpackPlugin = htmlWebpackPlugin
@@ -20,21 +31,12 @@ class InterpolateHtmlPlugin {
   }
 }
 
-const PATH = {
-  build: __dirname + '/build',
-  publicDir: __dirname + '/public',
-  mainJS: __dirname + '/src/index.js',
-  template: __dirname + '/src/index.html',
-  public: '/',
-  assest: 'static',
-}
-
 const DEFAULT = {
   root: {
     mode: process.env.NODE_ENV,
 
     entry: {
-      index: PATH.mainJS,
+      index: CONFIG.mainJS,
     },
 
     resolve: {
@@ -43,10 +45,10 @@ const DEFAULT = {
   },
 
   output: {
-    path: PATH.build,
-    filename: PATH.assest + '/[name].js',
-    assetModuleFilename: PATH.assest + '/assest/[name]-[id][ext]',
-    publicPath: PATH.public,
+    path: CONFIG.build,
+    filename: CONFIG.assestPath + '/[name].js',
+    assetModuleFilename: CONFIG.assestPath + '/assest/[name]-[id][ext]',
+    publicPath: CONFIG.publicPath,
   },
 
   loaders: [
@@ -56,7 +58,7 @@ const DEFAULT = {
     },
 
     {
-      test: /\.(png|jp?g|gif|webp|webm|mp3|mp4)$/i,
+      test: /\.(png|jpg|jpeg|gif|webp|webm|mp3|mp4)$/i,
       type: 'asset/resource',
     },
 
@@ -68,21 +70,18 @@ const DEFAULT = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: PATH.template,
+      template: CONFIG.template,
     }),
 
     new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
-      PUBLIC_URL: PATH.public,
+      PUBLIC_URL: CONFIG.publicPath,
     }),
   ],
 }
 
 const makeCssRule = (loaders = []) => {
-  const cssRegex = /\.(css|scss|sass)$/i
-  // const moduleRegex = /\.module\.(css|scss|sass)$/i
-
   const cssLoaders = {
-    test: cssRegex,
+    test: CONFIG.cssRegex,
     use: [...loaders, 'sass-loader'],
   }
 
@@ -91,9 +90,8 @@ const makeCssRule = (loaders = []) => {
     options: {
       modules: {
         auto: true,
-        // auto: moduleRegex,
-        exportLocalsConvention: 'dashes',
-        localIdentName: '[path][name]__[local]--[hash:base64:5]',
+        // auto: CONFIG.cssModuleRegex,
+        localIdentName: '[local]-[hash:base64:8]',
       },
     },
   }
@@ -125,7 +123,7 @@ const makeBabelRule = ({ presets = [], plugins = [] }) => {
 
 module.exports = {
   DEFAULT,
-  PATH,
+  CONFIG,
   makeCssRule,
   makeBabelRule,
 }
