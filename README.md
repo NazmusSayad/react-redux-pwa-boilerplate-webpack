@@ -36,7 +36,7 @@ $ cd react-minimal-boilerplate
 - Install dependencies and save the versions
 `$ npm install --save`
 
-- Remove `<InitialApp />` from **[src/App.jsx](/src/App.jsx)** and write your own code. [Don't forget to delete **[src/InitialApp](/src/InitialApp)** folder (:]
+- Remove `<InitialApp />` from **[src/App.jsx](/src/App.jsx)** and write your own code. [Don't forget to delete **[src/#InitialApp](/src/#InitialApp)** folder (:]
 
 - Launches the app in development mode on [`http://localhost:80`](http://localhost:80)
 `$ npm start` 
