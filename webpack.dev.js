@@ -1,6 +1,6 @@
 process.env.NODE_ENV = 'development'
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const { DEFAULT, makeCssRules, makeBabelRules } = require('./webpack.common')
+const { DEFAULT, makeCssRule, makeBabelRule } = require('./webpack.common')
 
 module.exports = {
   ...DEFAULT.root,
@@ -12,8 +12,8 @@ module.exports = {
   module: {
     rules: [
       ...DEFAULT.loaders,
-      makeCssRules(['style-loader', 'css-loader']),
-      makeBabelRules({ plugins: ['react-refresh/babel'] }),
+      makeCssRule(['style-loader', 'css-loader']),
+      makeBabelRule({ plugins: ['react-refresh/babel'] }),
     ],
   },
 

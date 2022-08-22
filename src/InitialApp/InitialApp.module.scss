@@ -16,17 +16,17 @@ body {
 }
 
 .paragraph {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
 }
 
 .link {
-  display: block;
+  display: inline-block;
   color: inherit;
   background-color: #498cb6;
   padding: 0.75rem 1.75rem;
   text-decoration: none;
   width: fit-content;
-  margin: auto;
+  margin: 0.5rem;
   border-radius: 0.5rem;
   transition: 0.3s ease-in-out;
 

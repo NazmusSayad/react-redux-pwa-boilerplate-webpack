@@ -4,8 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const {
   DEFAULT,
   PATH,
-  makeCssRules,
-  makeBabelRules,
+  makeCssRule,
+  makeBabelRule,
 } = require('./webpack.common')
 
 const cssLoaders = [
@@ -32,8 +32,8 @@ module.exports = {
   module: {
     rules: [
       ...DEFAULT.loaders,
-      makeCssRules(cssLoaders),
-      makeBabelRules({ presets: ['@babel/preset-env'] }),
+      makeCssRule(cssLoaders),
+      makeBabelRule({ presets: ['@babel/preset-env'] }),
     ],
   },
 
@@ -45,7 +45,7 @@ module.exports = {
     }),
 
     new CopyWebpackPlugin({
-      patterns: [{ from: 'public' }],
+      patterns: [{ from: PATH.publicDir }],
     }),
   ],
 }

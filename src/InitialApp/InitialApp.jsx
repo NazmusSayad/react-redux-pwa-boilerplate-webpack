@@ -1,5 +1,17 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 import css from './InitialApp.module.scss'
+
+const Home = () => {
+  return (
+    <div>
+      <p className={css.paragraph}>This is home page...</p>
+
+      <Link className={css.link} to="/about">
+        About
+      </Link>
+    </div>
+  )
+}
 
 const About = () => {
   return (
@@ -13,11 +25,14 @@ const About = () => {
   )
 }
 
-const Home = () => {
+const Error = () => {
   return (
     <div>
-      <p className={css.paragraph}>This is home page...</p>
+      <p className={css.paragraph}>This is isn't created yet...</p>
 
+      <Link className={css.link} to="/">
+        Home
+      </Link>
       <Link className={css.link} to="/about">
         About
       </Link>
@@ -33,7 +48,9 @@ const InitialApp = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/404" element={<Error />} />
           <Route path="/about" element={<About />} />
+          <Route path="/*" element={<Navigate to="404" />} />
         </Routes>
       </BrowserRouter>
     </>

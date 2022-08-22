@@ -5,6 +5,7 @@
     "stable": "npm update --save"
   },
   "dependencies": {
+    "axios": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "latest"

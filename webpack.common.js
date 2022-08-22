@@ -21,11 +21,12 @@ class InterpolateHtmlPlugin {
 }
 
 const PATH = {
+  build: __dirname + '/build',
+  publicDir: __dirname + '/public',
   mainJS: __dirname + '/src/index.js',
   template: __dirname + '/src/index.html',
-  build: __dirname + '/dist',
-  assest: 'static',
   public: '/',
+  assest: 'static',
 }
 
 const DEFAULT = {
@@ -55,7 +56,7 @@ const DEFAULT = {
     },
 
     {
-      test: /\.(png|jpe?g|gif|webp|webm|mp3|mp4)$/i,
+      test: /\.(png|jp?g|gif|webp|webm|mp3|mp4)$/i,
       type: 'asset/resource',
     },
 
@@ -69,15 +70,16 @@ const DEFAULT = {
     new HtmlWebpackPlugin({
       template: PATH.template,
     }),
+
     new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
       PUBLIC_URL: PATH.public,
     }),
   ],
 }
 
-const makeCssRules = (loaders = []) => {
+const makeCssRule = (loaders = []) => {
   const cssRegex = /\.(css|scss|sass)$/i
-  const moduleRegex = /\.module\.(css|scss|sass)$/i
+  // const moduleRegex = /\.module\.(css|scss|sass)$/i
 
   const cssLoaders = {
     test: cssRegex,
@@ -88,7 +90,9 @@ const makeCssRules = (loaders = []) => {
     loader: 'css-loader',
     options: {
       modules: {
-        auto: moduleRegex,
+        // auto: moduleRegex,
+        auto: true,
+        exportLocalsConvention: 'dashes',
         localIdentName: '[path][name]__[local]--[hash:base64:5]',
       },
     },
@@ -97,9 +101,9 @@ const makeCssRules = (loaders = []) => {
   return cssLoaders
 }
 
-const makeBabelRules = ({ presets = [], plugins = [] }) => {
+const makeBabelRule = ({ presets = [], plugins = [] }) => {
   return {
-    test: /\.(js|mjs|jsx)$/,
+    test: /\.(js|mjs|jsx)$/i,
     exclude: /(node_modules|bower_components)/,
     use: {
       loader: 'babel-loader',
@@ -122,6 +126,6 @@ const makeBabelRules = ({ presets = [], plugins = [] }) => {
 module.exports = {
   DEFAULT,
   PATH,
-  makeCssRules,
-  makeBabelRules,
+  makeCssRule,
+  makeBabelRule,
 }
