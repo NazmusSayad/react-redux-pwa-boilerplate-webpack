@@ -31,17 +31,18 @@ export default function (...params) {
     },
   }
 
-  return [
+  return {
     value,
     isValid,
     hasError,
     handler,
-    {
+    set: {
       value: setValue,
       isTouched: setIsTouched,
-      reset: () => {
-        setIsTouched(false), setValue(defaultValue)
-      },
     },
-  ]
+    reset() {
+      setIsTouched(false)
+      setValue(defaultValue)
+    },
+  }
 }
