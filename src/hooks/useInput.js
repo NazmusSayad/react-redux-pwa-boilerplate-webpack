@@ -1,20 +1,29 @@
 import { useState } from 'react'
 
-export default function (...params) {
+const noReturnFromValidatorFnMessage =
+  'Must return a Boolean or Array[Boolean, message] inside the validator function'
+const parseParams = params => {
   params = params.reverse()
   const validatorFn = params[0] || (() => true)
   const defaultValue = params[1] || ''
+  return [validatorFn, defaultValue]
+}
+
+export default function (...params) {
+  const [validatorFn, defaultValue] = parseParams(params)
 
   const [value, setValue] = useState(defaultValue)
   const [isTouched, setIsTouched] = useState(false)
 
   const valid = validatorFn(value)
+  if (valid == undefined) throw new Error(noReturnFromValidatorFnMessage)
   const isValid = valid[0] ?? valid
+
   const error = isTouched && !isValid
   const hasError = error && (valid[1] || true)
 
   const handler = {
-    blur(e) {
+    blur() {
       setIsTouched(true)
     },
     change(e) {
