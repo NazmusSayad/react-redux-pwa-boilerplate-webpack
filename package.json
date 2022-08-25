@@ -7,7 +7,9 @@
     "axios": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "latest"
+    "react-redux": "latest",
+    "react-router-dom": "latest",
+    "@reduxjs/toolkit": "latest"
   },
   "devDependencies": {
     "@babel/core": "latest",
