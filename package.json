@@ -3,6 +3,7 @@
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack build --config webpack.prod.js"
   },
+  "homepage": "home",
   "dependencies": {
     "axios": "latest",
     "react": "latest",
