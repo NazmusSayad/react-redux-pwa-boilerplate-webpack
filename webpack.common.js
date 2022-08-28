@@ -89,9 +89,12 @@ const makeCssRule = (loaders = []) => {
     loader: 'css-loader',
     options: {
       modules: {
+        localIdentName:
+          process.env.NODE_ENV === 'development'
+            ? '[local]([name])[hash:base64:5]'
+            : '[hash:base64]',
         auto: true,
         // auto: CONFIG.cssModuleRegex,
-        localIdentName: '[local]-[hash:base64:8]',
       },
     },
   }
