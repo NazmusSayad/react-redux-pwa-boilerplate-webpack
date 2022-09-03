@@ -1,12 +1,9 @@
 process.env.NODE_ENV = 'production'
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const {
-  DEFAULT,
-  CONFIG,
-  makeCssRule,
-  makeBabelRule,
-} = require('./webpack.common')
+const config = require('./config')
+const DEFAULT = require('./webpack.common')
+const { makeCssRule, makeBabelRule } = require('./helpers')
 
 const cssLoaders = [
   MiniCssExtractPlugin.loader,
@@ -41,11 +38,11 @@ module.exports = {
     ...DEFAULT.plugins,
 
     new MiniCssExtractPlugin({
-      filename: CONFIG.assestPath + '/[name].css',
+      filename: config.assestPath + '/[name].css',
     }),
 
     new CopyWebpackPlugin({
-      patterns: [{ from: CONFIG.publicDir }],
+      patterns: [{ from: config.publicDir }],
     }),
   ],
 }

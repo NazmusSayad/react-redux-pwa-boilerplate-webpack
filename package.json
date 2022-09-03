@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack build --config webpack.prod.js"
+    "start": "webpack serve --config webpack/webpack.dev.js",
+    "build": "webpack build --config webpack/webpack.prod.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",

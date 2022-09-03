@@ -1,6 +1,8 @@
 process.env.NODE_ENV = 'development'
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
-const { DEFAULT, makeCssRule, makeBabelRule } = require('./webpack.common')
+const CleanTerminalPlugin = require('./plugins/CleanTerminalPlugin')
+const DEFAULT = require('./webpack.common')
+const { makeCssRule, makeBabelRule } = require('./helpers')
 
 module.exports = {
   ...DEFAULT.root,
@@ -17,7 +19,11 @@ module.exports = {
     ],
   },
 
-  plugins: [...DEFAULT.plugins, new ReactRefreshWebpackPlugin()],
+  plugins: [
+    ...DEFAULT.plugins,
+    new ReactRefreshWebpackPlugin(),
+    new CleanTerminalPlugin(),
+  ],
 
   devServer: {
     host: 'localhost',
