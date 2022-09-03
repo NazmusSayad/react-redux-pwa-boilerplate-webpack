@@ -17,9 +17,9 @@ module.exports = {
 
   output: {
     path: config.build,
-    filename: config.assestPath + '/[name].js',
-    assetModuleFilename: config.assestPath + '/assest/[name]-[id][ext]',
     publicPath: config.publicPath,
+    filename: config.assestPath + '/[name].js',
+    assetModuleFilename: config.assestModulePath + '/[name]-[id][ext]',
   },
 
   loaders: [
@@ -27,15 +27,22 @@ module.exports = {
       test: /\.(htm|html)$/i,
       loader: 'html-loader',
     },
-
     {
-      test: /\.(png|jpg|jpeg|gif|webp|webm|mp3|mp4)$/i,
       type: 'asset/resource',
+      resourceQuery: /file/i,
     },
-
     {
-      test: /\.(svg|txt)$/i,
       type: 'asset/source',
+      resourceQuery: /raw/i,
+    },
+    {
+      type: 'asset/inline',
+      resourceQuery: /url/i,
+    },
+    {
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/i,
+      use: ['@svgr/webpack'],
     },
   ],
 

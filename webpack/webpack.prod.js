@@ -1,5 +1,6 @@
 process.env.NODE_ENV = 'production'
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { GenerateSW } = require('workbox-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const config = require('./config')
 const DEFAULT = require('./webpack.common')
@@ -43,6 +44,14 @@ module.exports = {
 
     new CopyWebpackPlugin({
       patterns: [{ from: config.publicDir }],
+    }),
+
+    new GenerateSW({
+      skipWaiting: true,
+      clientsClaim: true,
+      swDest:`sw.js`,
+      exclude: [/\.map$/, /asset-manifest\.json$/, /LICENSE/],
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
     }),
   ],
 }

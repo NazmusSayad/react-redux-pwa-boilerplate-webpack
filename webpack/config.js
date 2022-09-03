@@ -6,6 +6,7 @@ module.exports = {
 
   publicPath: '/',
   assestPath: 'static',
+  assestModulePath: 'static/assest',
 
   cssRegex: /\.(c|sc|sa)ss$/i,
   // cssModuleRegex: /\.module\.\w+$/i,

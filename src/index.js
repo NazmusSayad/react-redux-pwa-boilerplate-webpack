@@ -4,6 +4,8 @@ import './styles/index.scss'
 import store from './store'
 import App from './App'
 
+navigator?.serviceWorker?.register('/sw.js').catch(() => {})
+
 const rootElement = document.getElementById('Root')
 const root = createRoot(rootElement)
 

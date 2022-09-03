@@ -67,12 +67,29 @@ $ cd react-redux-minimal-boilerplate
 - Change assest types from [webpack.common.js](/webpack/webpack.common.js)
 
   ```
-  loaders: [
-     {
-        test: /\.(png|jp?g|gif|webp|webm|mp3|mp4)$/i,
+    loaders: [
+      {
+        test: /\.(htm|html)$/i,
+        loader: 'html-loader',
+      },
+      {
         type: 'asset/resource',
-     }
-  ]
+        resourceQuery: /file/i,
+      },
+      {
+        type: 'asset/source',
+        resourceQuery: /raw/i,
+      },
+      {
+        type: 'asset/inline',
+        resourceQuery: /url/i,
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/i,
+        use: ['@svgr/webpack'],
+      },
+    ]
   ```
 
 - To change CSS module regex add `cssModuleRegex` property inside the default export object [config.js](/webpack/config.js)
@@ -105,7 +122,7 @@ $ cd react-redux-minimal-boilerplate
 
 ## How to Update
 
-- `npm update --save` --- Update Node.js modules (dependencies)
+- `npm update --save` --- Update npm modules (dependencies)
 
 <br/>
 
