@@ -20,11 +20,11 @@ Checkout [demo](https://react-setup.vercel.app) site.
 
 ## Getting Started
 
-[Generate](https://github.com/NazmusSayad/react-redux-minimal-boilerplate/generate) a new project from this template and clone it.
+[Generate](https://github.com/NazmusSayad/react-redux-minimal-pwa-boilerplate/generate) a new project from this template and clone it.
 
 ```
-$ git clone https://github.com/NazmusSayad/react-redux-minimal-boilerplate
-$ cd react-redux-minimal-boilerplate
+$ git clone https://github.com/NazmusSayad/react-redux-minimal-pwa-boilerplate
+$ cd react-redux-minimal-pwa-boilerplate
 ```
 
 ## Install & Start
