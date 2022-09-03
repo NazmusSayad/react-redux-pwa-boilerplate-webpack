@@ -4,7 +4,7 @@ Checkout [demo](https://react-setup.vercel.app) site.
 
 ## Features
 
-- 5x lighter than `create-react-app`
+- 3x lighter than `create-react-app`
 - CSS module enabled
 - Babel && PostCSS && SASS preinstalled
 - Hot module replacement during local development
