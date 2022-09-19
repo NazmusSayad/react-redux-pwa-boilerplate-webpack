@@ -1,5 +1,7 @@
 {
+  "framework": "create-react-app",
   "rewrites":  [
     {"source": "/(.*)", "destination": "/"}
-  ]
+  ],
+  "outputDirectory": "build"
 }
